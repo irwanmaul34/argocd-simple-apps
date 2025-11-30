@@ -1,0 +1,7 @@
+resources:
+  - nginx/deployment.yaml
+  - nginx/configmap.yaml
+  - nginx/service.yaml
+  - httpd/deployment.yaml
+  - httpd/configmap.yaml
+  - httpd/service.yaml
