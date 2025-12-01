@@ -1,1 +1,0 @@
-# argocd-simple-apps
