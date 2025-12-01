@@ -14,15 +14,14 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:stable
+        image: nginx:latest
+        ports:
+        - containerPort: 80
         volumeMounts:
-        - name: html
+        - name: nginx-config
           mountPath: /usr/share/nginx/html/index.html
           subPath: index.html
       volumes:
-      - name: html
+      - name: nginx-config
         configMap:
           name: nginx-index
-          items:
-          - key: index.html
-            path: index.html

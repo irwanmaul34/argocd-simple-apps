@@ -15,14 +15,13 @@ spec:
       containers:
       - name: httpd
         image: httpd:latest
+        ports:
+        - containerPort: 80
         volumeMounts:
-        - name: html
+        - name: httpd-config
           mountPath: /usr/local/apache2/htdocs/index.html
           subPath: index.html
       volumes:
-      - name: html
+      - name: httpd-config
         configMap:
-          name: httpd-index
-          items:
-          - key: index.html
-            path: index.html
+          name: httpd-index   # akan otomatis diganti hash oleh kustomize
