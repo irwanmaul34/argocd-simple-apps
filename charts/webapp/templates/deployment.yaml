@@ -4,6 +4,7 @@ metadata:
   name: {{ include "webapp.fullname" . }}
   annotations:
     configmap-hash: "{{ .Files.Get .Values.htmlFile | sha256sum }}"
+    ingress-hash: {{ include (print $.Template.BasePath "/ingress.yaml") . | sha256sum }}
 spec:
   replicas: 1
   selector:
@@ -15,6 +16,7 @@ spec:
         app: {{ include "webapp.fullname" . }}
       annotations:
         configmap-hash: "{{ .Files.Get .Values.htmlFile | sha256sum }}"
+        ingress-hash: {{ include (print $.Template.BasePath "/ingress.yaml") . | sha256sum }}
     spec:
       containers:
         - name: {{ include "webapp.fullname" . }}
