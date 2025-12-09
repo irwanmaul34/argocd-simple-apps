@@ -1,0 +1,5 @@
+apiVersion: v2
+name: webapp
+description: Generic web application chart (nginx/httpd/etc)
+version: 1.0.0
+type: application

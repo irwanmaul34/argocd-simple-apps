@@ -1,0 +1,10 @@
+name: nginx
+image:
+  repository: nginx
+  tag: stable
+
+containerPort: 80
+servicePort: 8081
+
+enableHtml: true
+htmlFile: "apps/nginx/index.html"

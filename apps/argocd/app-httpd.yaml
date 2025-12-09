@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/irwanmaul34/argocd-simple-apps'
+    path: charts/webapp
+    helm:
+      valueFiles:
+        - ../../apps/httpd/values.yaml
+  destination:
+    namespace: stagging
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

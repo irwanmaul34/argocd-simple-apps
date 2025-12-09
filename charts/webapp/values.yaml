@@ -1,0 +1,10 @@
+name: webapp
+image:
+  repository: nginx
+  tag: latest
+
+containerPort: 80
+servicePort: 80
+
+enableHtml: false
+htmlFile: ""

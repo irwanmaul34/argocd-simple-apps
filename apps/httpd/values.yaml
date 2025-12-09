@@ -1,0 +1,10 @@
+name: httpd
+image:
+  repository: httpd
+  tag: latest
+
+containerPort: 80
+servicePort: 8080
+
+enableHtml: true
+htmlFile: "apps/httpd/index.html"
