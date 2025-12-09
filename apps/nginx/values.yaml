@@ -4,7 +4,7 @@ image:
   tag: stable
 
 containerPort: 80
-servicePort: 8081
+servicePort: 80
 
 enableHtml: true
 htmlFile: "apps/nginx/index.html"
