@@ -8,3 +8,7 @@ servicePort: 8080
 
 enableHtml: true
 htmlFile: "apps/httpd/index.html"
+
+ingress:
+  enabled: true
+  path: /httpd

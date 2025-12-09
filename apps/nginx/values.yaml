@@ -8,3 +8,7 @@ servicePort: 8081
 
 enableHtml: true
 htmlFile: "apps/nginx/index.html"
+
+ingress:
+  enabled: true
+  path: /nginx

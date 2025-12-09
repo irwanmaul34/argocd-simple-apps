@@ -8,3 +8,8 @@ servicePort: 80
 
 enableHtml: false
 htmlFile: ""
+
+ingress:
+  enabled: false
+  path: /
+  annotations: {}
