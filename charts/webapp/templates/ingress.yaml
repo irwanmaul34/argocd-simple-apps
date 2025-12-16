@@ -16,14 +16,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nginx-service
+            name: nginx
             port:
               number: 80
       - path: /httpd
         pathType: Prefix
         backend:
           service:
-            name: httpd-service
+            name: httpd
             port:
               number: 80
 {{- end }}
