@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  annotations:
+    configmap-hash: "{{ .Files.Get .Values.htmlFile | sha256sum }}"
+    ingress-hash: {{ include (print $.Template.BasePath "/ingress.yaml") . | sha256sum }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "webapp.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "webapp.fullname" . }}
+      annotations:
+        configmap-hash: "{{ .Files.Get .Values.htmlFile | sha256sum }}"
+        ingress-hash: {{ include (print $.Template.BasePath "/ingress.yaml") . | sha256sum }}
+    spec:
+      containers:
+        - name: {{ include "webapp.fullname" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          volumeMounts:
+            {{- if .Values.enableHtml }}
+            - name: html
+              mountPath: /usr/local/apache2/htdocs/index.html
+              subPath: index.html
+            {{- end }}
+      volumes:
+        {{- if .Values.enableHtml }}
+        - name: html
+          configMap:
+            name: {{ include "webapp.fullname" . }}-html
+        {{- end }}
