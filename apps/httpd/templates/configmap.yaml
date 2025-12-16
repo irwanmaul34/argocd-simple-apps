@@ -1,0 +1,9 @@
+{{- if .Values.enableHtml }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "webapp.fullname" . }}-html
+data:
+  index.html: |-
+{{ .Files.Get .Values.htmlFile | indent 4 }}
+{{- end }}
